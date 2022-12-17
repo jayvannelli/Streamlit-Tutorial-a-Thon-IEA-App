@@ -8,6 +8,11 @@ def get_electricity_data():
     return _df
 
 
-df = get_electricity_data()
+def main():
+    df = get_electricity_data()
 
-st.write(df)
+    st.write(df)
+
+
+if __name__ == "__main__":
+    main()
