@@ -1,18 +1,15 @@
 import streamlit as st
-import pandas as pd
+
+st.set_page_config(page_title="IEA Streamlit Dashboard",
+                   page_icon=":earth:",
+                   layout="centered")
 
 
-@st.cache
-def get_electricity_data():
-    _df = pd.read_excel("data/IEA_Energy_Prices_Monthly_Excerpt_122022.xlsx", sheet_name="raw_data")
-    return _df
+def main():
+    st.title("International Energy Agency (IEA) Web-App")
+    st.image("images/International-energy-agency-logo.png", width=150)
 
 
-df = get_electricity_data()
+if __name__ == "__main__":
+    main()
 
-product_type = st.selectbox("Product type:", options=df['PRODUCT'].unique())
-single_country = st.selectbox("Select country:", options=df['COUNTRY'].unique())
-multiple_countries = st.multiselect("Select countries:", options=df['COUNTRY'].unique())
-
-
-st.write(df)
